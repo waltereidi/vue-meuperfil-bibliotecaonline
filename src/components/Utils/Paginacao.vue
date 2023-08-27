@@ -9,7 +9,7 @@
         return {
             paginacaoRetorno: 1,
             arrayPaginas: [],
-            paginacaoAtual:1 ,
+            paginacaoAtual:1 , 
         }
     },
     emits: ['retornaPaginacao'],

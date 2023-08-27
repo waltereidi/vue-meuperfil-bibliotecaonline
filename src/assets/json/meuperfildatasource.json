@@ -1,0 +1,13 @@
+{
+   "id":1,
+   "created_at":null,
+   "updated_at":"2023-08-22T18:00:53.000000Z",
+   "profile_picture":"https://images.unsplash.com/photo-1542596768-5d1d21f1cf98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+   "introducao":"Desde muito cedo, os livros se tornaram meus companheiros mais leais. Cada página virada era uma nova aventura, um mergulho em diferentes realidades, culturas e perspectivas. Ao longo dos anos, essa paixão se transformou em uma missão pessoal: criar um espaço onde todos pudessem se perder nas maravilhas da literatura, assim como eu fiz.\n\nNa Biblioteca Online Letícia, você encontrará uma curadoria cuidadosa de livros que marcaram minha jornada literária. Da poesia sensível aos romances que aquecem o coração, da filosofia profunda aos contos que despertam a imaginação, cada obra aqui presente carrega um significado especial para mim. Espero que essas páginas virtuais se tornem um refúgio para você, um lugar onde possamos compartilhar ideias, explorar mundos e crescer juntos através do poder das palavras.\n\nSinta-se à vontade para explorar, ler e conectar-se. Esta biblioteca é sua tanto quanto é minha, e estou empolgada para embarcar nessa jornada literária ao seu lado. Que a magia das histórias continue nos inspirando e nos unindo, página por página.\n\nCom carinho,\nLetícia",
+   "datanascimento":"1993-12-29",
+   "users_id":1 , 
+   "nome": "Leticia" ,
+   "livrosdoperfil" : 8,
+   "livrosentregues" : 28 , 
+   "livrosrecebidos" : 0
+}

@@ -1,0 +1,24 @@
+#quadrante{
+    height: 35vh;
+}
+#quadranteImagem{
+
+}
+#quadranteImagem >img {
+    max-height: 35vh;
+    object-fit: scale-down;
+}
+#quadranteInformacoes{
+
+}
+#quadranteDescricao{
+}
+
+.cabecalho {
+    word-wrap: normal;
+    word-break: break-word;;
+}
+#descricao {
+    font-size: 16px;
+    
+}

@@ -1,24 +1,21 @@
 <script lang="ts">
 import BibliotecaConfig from "@/assets/json/bibliotecaconfig.json";
 import Paginacao from "@/components/Utils/Paginacao.vue";
+import LivrosDoPerfilDataSource from "@/assets/json/livrosdoperfil.json";
 
 export default {
     props: {
         nome: String, 
-        livrosDoPerfilDataSource: Object, 
         
     },
-    emits: ['paginacaoLivros'], 
     data() {
         return { 
             countLivros: 0,
-            bibliotecaConfigDataSource : BibliotecaConfig , 
+            bibliotecaConfigDataSource: BibliotecaConfig, 
+            livrosDoPerfilDataSource : LivrosDoPerfilDataSource ,
         }
     },    
     methods: { 
-        paginacaoLivros() {
-            
-        },
         childRetornaPaginacao(paginacao, quantidade) { 
             
         }
@@ -31,7 +28,11 @@ export default {
 <template>
       <div class="d-flex justify-content-between align-items-center mb-4" >
                       <p class="lead fw-normal mb-0">Livros de {{ nome }}</p>
-                      <Paginacao :quantidade="40" :multiplicador="5" @retornaPaginacao="childRetornaPaginacao"></Paginacao>
+                      <Paginacao :quantidade="40"
+                       :multiplicador="5"
+                       :limitePaginacao="8"
+                       :travarPaginacao="false"
+                       @retornaPaginacao="childRetornaPaginacao"></Paginacao>
                     </div>
                     <div v-for="( livro) in livrosDoPerfilDataSource" >
                         

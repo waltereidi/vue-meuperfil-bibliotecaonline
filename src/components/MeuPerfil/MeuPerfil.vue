@@ -1,13 +1,11 @@
 <script lang="ts">
 import MeuPerfilDataSource from "@/assets/json/meuperfildatasource.json";
-import LivrosDoPerfilDataSource from "@/assets/json/livrosdoperfil.json"
 import LivrosMeuPerfil from "@/components/MeuPerfil/LivrosMeuPerfil.vue";
 
 export default { 
     data() {
         return {
                 meuPerfilDataSource: MeuPerfilDataSource, 
-                livrosDoPerfilDataSource: LivrosDoPerfilDataSource , 
             }
     },
     components: {
@@ -56,11 +54,7 @@ export default {
                    <p>{{ meuPerfilDataSource.introducao }}</p>
                   </div>
                 </div>
-                    <LivrosMeuPerfil 
-                        :nome="meuPerfilDataSource.nome" 
-                        :livrosDoPerfilDataSource="livrosDoPerfilDataSource" 
-                        @paginacaoLivros="childPaginacaoLivros"> 
-                    </LivrosMeuPerfil>
+                    <LivrosMeuPerfil :nome="meuPerfilDataSource.nome"></LivrosMeuPerfil> 
 
               </div>
             </div>

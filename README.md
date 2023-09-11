@@ -6,3 +6,4 @@
 
 <img src="https://github.com/waltereidi/vue-meuperfil-bibliotecaonline/assets/6370415/3efad917-a19d-45fb-a2f2-74dc1e445f0f"> 
 
+<img src="https://github.com/waltereidi/vue-meuperfil-bibliotecaonline/assets/6370415/cafe952c-5785-40f1-bb41-1f518306ac01">

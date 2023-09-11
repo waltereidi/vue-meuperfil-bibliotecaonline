@@ -1,11 +1,31 @@
 <script lang="ts">
-import config from "@/assets/json/bibliotecaconfig.json"
+import config from "@/assets/json/bibliotecaconfig.json";
+import LivroDataSource from "@/assets/json/livroDataSource.json";
 
 export default {
+    props: {
+        dataSource: {
+            type: Object,
+            required: true,
+        }
+    },
     data() {
         return {
             configDataSource: config,
+            livroDataSource: LivroDataSource,
+            downloadIcon: '',
 
+        }
+    },
+    mounted() {
+        if (/drive\.google/.test(this.livroDataSource.urldownload)) {
+            this.downloadIcon = 'src\\assets\\icons\\icons8-google-drive.svg';
+        } else if (/1drv\.ms/.test(this.livroDataSource.urldownload)) {
+            this.downloadIcon = 'src\\assets\\icons\\icons8-onedrive.svg';
+        } else if (/dropbox/.test(this.livroDataSource.urldownload)) {
+            this.downloadIcon = 'src\\assets\\icons\\icons8-dropbox.svg';
+        } else {
+            this.downloadIcon = '';
         }
     }
 }
@@ -15,72 +35,68 @@ export default {
     <div class="container">
 
         <div class="container container--left">
-            <img class="rounded mx-auto d-block" :src="configDataSource.capaLivroDefault" alt="capa do livro">
+            <img class="rounded mx-auto d-block" :src="livroDataSource.capalivro ?? configDataSource.capaLivroDefault"
+                alt="capa do livro">
 
         </div>
         <div class="container container--right">
             <div class="container container--descricao">
                 <div class="livro-titulo">
-                    <h3>Livro Titulo</h3>
+                    <h3>{{ livroDataSource.titulo }}</h3>
 
-                    <p>Edição gênero
-                        <span class="pipeLineSeparator">|</span>
-                        Por Autor
+                    <p> <span v-if="livroDataSource.idioma.length > 0">Edição {{ livroDataSource.idioma }}
+                            <span class="pipeLineSeparator">|</span></span>
+                        Por {{ livroDataSource.autores_nome }}
                     </p>
 
                 </div>
+                <br><br>
                 <hr>
 
 
-                <details>
+                <details v-if="livroDataSource.descricao.length > 400">
 
                     <summary>Leia mais...
                         <blockquote>
-                            "Principles: Life and Work" é um livro escrito por Ray Dalio, um renomado investidor, empresário
-                            e
-                            fundador da Bridgewater Associates, uma das maiores empresas de hedge funds do mundo. O livro
-                            explora os
-                            princípios que Dalio desenvolveu ao longo de sua carreira para alcançar o sucesso nos negócios e
-                            na
-                            vida.
+                            {{ livroDataSource.descricao.substring(0, 400) }}<span>...</span>
                         </blockquote>
 
                     </summary>
-                    "Principles: Life and Work" é um livro escrito por Ray Dalio, um renomado investidor, empresário e
-                    fundador da Bridgewater Associates, uma das maiores empresas de hedge funds do mundo. O livro explora os
-                    princípios que Dalio desenvolveu ao longo de sua carreira para alcançar o sucesso nos negócios e na
-                    vida.
-
-                    Dalio compartilha insights valiosos sobre como tomar decisões eficazes, construir equipes de alto
-                    desempenho e criar uma cultura organizacional que valorize a honestidade e a transparência. Ele descreve
-                    suas próprias experiências e os desafios que enfrentou ao longo do caminho, usando exemplos concretos
-                    para ilustrar seus princípios.
-
-                    O livro é conhecido por seu foco na importância da reflexão, do aprendizado contínuo e da busca da
-                    verdade. Ele oferece orientações práticas que podem ser aplicadas tanto no mundo dos negócios quanto na
-                    vida pessoal, tornando-o uma leitura valiosa para quem busca o autodesenvolvimento e o sucesso em
-                    diversas áreas.
-
-                    Lembre-se de que esta é apenas uma breve descrição do livro. Se você deseja uma descrição mais detalhada
-                    ou precisa de informações específicas do livro para um projeto ou pesquisa, sugiro adquirir o livro ou
-                    procurar fontes adicionais para obter informações mais abrangentes.
-                    maiores empresas de hedge funds do mundo. O livro explora os princípios que Dalio desenvolveu ao longo
-                    de sua carreira para alcançar o sucesso nos negócios e na vida.
-
-                    Dalio compartilha insights valiosos sobre como tomar decisões eficazes, construir equipes de alto
-                    desempenho e criar uma cultura organizacional que valorize a honestidade e a transparência. Ele descreve
-                    suas próprias experiências e os desafios que enfrentou ao longo do caminho, usando exemplos concretos
-                    para ilustrar seus princípios.
-
-                    O livro é conhecido por seu foco na importância da reflexão, do aprendizado contínuo e da busca da
-                    verdade. Ele oferece orientações práticas que podem ser aplicadas tanto no mundo dos negócios quanto na
-                    vida pessoa
+                    {{ livroDataSource.descricao }}
                 </details>
+
+                <blockquote v-else>
+                    {{ livroDataSource.descricao }}
+                </blockquote>
             </div>
             <div class="container container--informacao ">
-                <div class="container container--content border rounded">
-                    sd
+                <div class="containerInformacao border rounded">
+                    <div class="containerInformacao--item">Autor
+                        <div class="containerInformacao--itemDescricao">{{ livroDataSource.autores_nome }}</div>
+                    </div>
+                    <div class="containerInformacao--item">Editora
+                        <div class="containerInformacao--itemDescricao">{{ livroDataSource.editoras_nome }}</div>
+                    </div>
+                    <div class="containerInformacao--item">ISBN
+                        <div class="containerInformacao--itemDescricao">{{ livroDataSource.isbn }}</div>
+                    </div>
+                    <div class="containerInformacao--item">Gênero
+                        <div class="containerInformacao--itemDescricao">{{ livroDataSource.genero }}</div>
+                    </div>
+                    <div class="containerInformacao--item-last">Idioma
+                        <div class="containerInformacao--itemDescricao containerInformacao--itemDescricao__last">{{
+                            livroDataSource.idioma }}</div>
+                    </div>
                 </div>
+            </div>
+            <br>
+            <div class="container--download">
+                <div class="container--header">Download</div>
+
+                <a :href="livroDataSource.urldownload" target="_blank"><img v-if="downloadIcon" :src="this.downloadIcon"
+                        alt="download">
+                    <p>{{ livroDataSource.urldownload }}</p>
+                </a>
             </div>
         </div>
 

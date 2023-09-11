@@ -51,12 +51,17 @@
         width: 100%;
         
     }
-    &--content {
-        margin-top :3em;
-        height: 4em;
-        width: 100%;
-    }
     
+    &--download{
+        font-weight: 600;
+        height: 100px;
+        width: 100px;
+        align-items: center;
+        
+        img{
+            margin-left:1em;
+        }
+    }
 }
 .footer {
     height: 5em;
@@ -78,5 +83,43 @@ details[open]  {
    blockquote{
     display: none;
    }
-   font-size: 14.3px;
+   font-size: 1em;
+}
+.containerInformacao {
+    margin-top: 3em;
+    height: 4em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &--item{
+        font-weight: 600;
+        text-align: center;
+        font-size: 0.8em;
+        width: 20%;
+        height: 100%;
+    }
+    &--item-last {
+        font-weight: 600;
+        text-align: center;
+        font-size: 0.8em;
+        width: 20%;
+        height: 100%;
+        margin-right: 0.5em;
+    }
+    &--itemDescricao{
+        font-weight: 100;
+        font-size: 0.9em;
+        word-break:break-all ;
+        border-right: solid 0.1px #BDBDBD;
+        height: 3em;
+        &__last {
+                border: none;
+            }
+    }
+    
+ 
+}
+hr {
+    margin: 0.2em;
 }

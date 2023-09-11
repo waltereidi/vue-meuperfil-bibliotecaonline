@@ -1,0 +1,55 @@
+@use "@material/card";
+@use "@material/button/styles";
+@use "@material/floating-label/mdc-floating-label";
+@use "@material/line-ripple/mdc-line-ripple";
+@use "@material/notched-outline/mdc-notched-outline";
+@use "@material/textfield";
+@use "@material/dialog";
+
+@include dialog.core-styles;
+
+.container { 
+    max-width: 90vh;
+    &--editar {
+        max-width: 70%;
+        float:left;
+        background-color: green;
+        height: 20em;
+    }
+    &--meuPerfil{
+        min-width: 14em;
+        max-width: 30%;
+        float:right;
+        border:solid 1px #BDBDBD;
+
+        .fotoPerfil{
+            width: 100%;
+            height: 12em;
+            background-color: antiquewhite;
+        }
+        .informacoes{
+            width: 100%;
+            height: 12em;
+            background-color: aqua;
+        }
+        .buttons{
+            width: 100%;
+            height: 6.5em;
+            display: block;
+            padding-top:1em;
+            padding-left:0.15em;
+
+            .mdc-button{
+                width: 100%;
+                &--pagina{
+                    --mdc-theme-primary:#4527A0;
+                }
+                &--editar{
+                    --mdc-theme-primary:#424242;
+                }
+            }
+        }
+    }
+
+
+}

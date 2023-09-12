@@ -5,51 +5,112 @@
 @use "@material/notched-outline/mdc-notched-outline";
 @use "@material/textfield";
 @use "@material/dialog";
-
 @include dialog.core-styles;
+@include textfield.core-styles;
+  .mdc-button {
 
-.container { 
-    max-width: 90vh;
-    &--editar {
-        max-width: 70%;
-        float:left;
-        background-color: green;
-        height: 20em;
-    }
-    &--meuPerfil{
-        min-width: 14em;
-        max-width: 30%;
-        float:right;
-        border:solid 1px #BDBDBD;
+      &--salvar {
+          --mdc-theme-primary: #00C853;
+      }
+  }
 
-        .fotoPerfil{
-            width: 100%;
-            height: 12em;
-            background-color: antiquewhite;
+.container {
+        margin-top: 3em;
+        display: flex;
+        width: 100vh;
+        justify-content: center;
+        border: solid 1px #bdbdbd;
+        padding:1em;
+        
+        img{
+            object-fit: contain;
+            max-width: 100%;
+            margin: auto;
         }
-        .informacoes{
-            width: 100%;
-            height: 12em;
-            background-color: aqua;
-        }
-        .buttons{
-            width: 100%;
-            height: 6.5em;
-            display: block;
-            padding-top:1em;
-            padding-left:0.15em;
-
-            .mdc-button{
-                width: 100%;
-                &--pagina{
-                    --mdc-theme-primary:#4527A0;
-                }
-                &--editar{
-                    --mdc-theme-primary:#424242;
-                }
+        &--input{
+            flex: 0 0 100%;
+            &__right{
+                float:right;
             }
         }
+        @media (min-width:200px) and (max-width: 400px) {
+        &--imagem {
+            flex: 0 0 120px;
+            order: 1;
+            height: 100%;
+        }
+        &--editar {
+            margin-left:1em;
+            flex: 0 0 240px;
+            height: 100%;
+            order: 2;
+        }
     }
+        @media (min-width:400px) and (max-width:900px) {
+            &--imagem {
+                flex: 0 0 33%;
+                order: 1;
+                height: 100%;
+            }
+    
+            &--editar {
+                margin-left:1em;
+                flex: 0 0 66%;
+                height: 100%;
+                order: 2;
+            }
+        }
+    
+        @media (min-width:900px) {
+            &--imagem {
+                flex: 0 0 30%;
+                order: 1;
+                height: 100%;
+            }
+    
+            &--editar {
+                margin-left:1em;
+                flex: 0 0 70%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                order: 2;
+            }
+        }
+}
+  .errorLabel {
+      color: #D50000;
+  }
 
 
+[type="date"] {
+    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+/* custom styles */
+body {
+    padding: 4em;
+    background: #e5e5e5;
+    font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+
+label {
+    display: block;
+}
+
+input {
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 3px 5px;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+    width: 190px;
 }
